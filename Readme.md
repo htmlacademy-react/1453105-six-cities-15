@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов»
 
 * Студент: [Дарья Петрова](https://up.htmlacademy.ru/react/15/user/1453105).
-* Наставник: `Неизвестно`.
+* Наставник: [Arthur Litovko](https://htmlacademy.ru/profile/id6927).
 
 ---
 
