@@ -1,4 +1,4 @@
-import {ShortHousingItem} from "../types/types.ts";
+import {ShortHousingItem} from '../types/types.ts';
 
 export const houseList:ShortHousingItem[] = [{
   id: '1',
@@ -50,14 +50,14 @@ export const houseList:ShortHousingItem[] = [{
   isFavorite: true,
   rating: 4.2
 },
-  {
-    id: '6',
-    title: 'Norm apartment',
-    costPerNight: 350,
-    type: 'Apartment' ,
-    previewImage: 'img/apartment-02.jpg',
-    isPremium: true,
-    isFavorite: false,
-    rating: 3.7
-  },]
+{
+  id: '6',
+  title: 'Norm apartment',
+  costPerNight: 350,
+  type: 'Apartment' ,
+  previewImage: 'img/apartment-02.jpg',
+  isPremium: true,
+  isFavorite: false,
+  rating: 3.7
+}];
 

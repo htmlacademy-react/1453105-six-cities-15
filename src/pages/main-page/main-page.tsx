@@ -1,13 +1,13 @@
-import HousingItem from "../../components/housing-item/housing-item.tsx";
-import {ShortHousingItem} from "../../types/types.ts";
+import HousingItem from '../../components/housing-item/housing-item.tsx';
+import {ShortHousingItem} from '../../types/types.ts';
 
 type MainPageProps = {
-  readonly numberItems: number;
-  readonly houseArray: ShortHousingItem[]
+  readonly numberItems?: number;
+  readonly houseArray: ShortHousingItem[];
 }
 
 function MainPage({houseArray, numberItems }:MainPageProps) {
-  const listItems = houseArray.slice(0, numberItems).map((item) =>  <HousingItem key={item.id} houseItem = {item} />);
+  const listItems = houseArray.slice(0, numberItems).map((item) => <HousingItem key={item.id} houseItem = {item} />);
 
   return (
     <div className="page page--gray page--main">
@@ -99,7 +99,7 @@ function MainPage({houseArray, numberItems }:MainPageProps) {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {listItems}
+                { listItems}
               </div>
             </section>
             <div className="cities__right-section">
@@ -109,7 +109,7 @@ function MainPage({houseArray, numberItems }:MainPageProps) {
         </div>
       </main>
     </div>
-  )
+  );
 }
 
 export default MainPage;
