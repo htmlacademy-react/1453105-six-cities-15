@@ -49,5 +49,15 @@ export const houseList:ShortHousingItem[] = [{
   isPremium: false,
   isFavorite: true,
   rating: 4.2
-}]
+},
+  {
+    id: '6',
+    title: 'Norm apartment',
+    costPerNight: 350,
+    type: 'Apartment' ,
+    previewImage: 'img/apartment-02.jpg',
+    isPremium: true,
+    isFavorite: false,
+    rating: 3.7
+  },]
 
