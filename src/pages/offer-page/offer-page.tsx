@@ -1,9 +1,5 @@
-import Header from '../../components/header/header.tsx';
-
 function OfferPage() {
   return (
-    <div className="page">
-      <Header/>
       <main className="page__main page__main--offer">
         <section className="offer">
           <div className="offer__gallery-container container">
@@ -306,7 +302,6 @@ function OfferPage() {
           </section>
         </div>
       </main>
-    </div>
   );
 }
 

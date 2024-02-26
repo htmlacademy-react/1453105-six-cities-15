@@ -4,6 +4,15 @@ export type OwnerInfo = {
   isPro: boolean;
   avatar: string;
 }
+export type UserInfo = {
+  name: string;
+  avatarUrl: string;
+  isPro: boolean;
+}
+export type FullUserInfo = UserInfo & {
+  email: string;
+  token: string;
+}
 export type ShortHousingItem = {
   id: string;
   title: string;
@@ -21,4 +30,14 @@ export type FullHousingItem = ShortHousingItem & {
   numberGuests: number;
   householdItems: string[];
   owner: OwnerInfo;
+}
+export type ReviewType = {
+  id: string;
+  comment: string;
+}
+
+export type FullReviewType = ReviewType & {
+  date: string;
+  user: UserInfo;
+  rating: number;
 }
