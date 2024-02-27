@@ -7,7 +7,7 @@ import FavoritesPage from '../../pages/favorites-page/favorites-page.tsx';
 import OfferPage from '../../pages/offer-page/offer-page.tsx';
 import ErrorPage from '../error-page/error-page.tsx';
 import PrivateRoute from '../private-route/private-route.tsx';
-import Layout from "../layout/layout.tsx";
+import Layout from '../layout/layout.tsx';
 
 type AppProps = {
   readonly numberItems: number;
@@ -22,27 +22,35 @@ function App({houseArray, numberItems }:AppProps) {
       <Routes>
         <Route
           path={AppRoute.Root}
-          element={<Layout authorizationStatus={authorization}/>} >
+          element={<Layout authorizationStatus={authorization}/>}
+        >
           <Route index
-                 element={<MainPage houseArray={houseArray} numberItems={numberItems} viewType={HousingViewType.Medium}/>} />
+            element={<MainPage houseArray={houseArray} numberItems={numberItems} viewType={HousingViewType.Medium}/>}
+          />
           <Route
             path={AppRoute.Login}
             element={
-            <PrivateRoute authorizationStatus={authorization} isReverse>
-              <LoginPage/>
-            </PrivateRoute>}/>
+              <PrivateRoute authorizationStatus={authorization} isReverse>
+                <LoginPage/>
+              </PrivateRoute>
+            }
+          />
           <Route
             path={AppRoute.Favorites}
             element={
               <PrivateRoute authorizationStatus={authorization}>
                 <FavoritesPage houseArray={favoritesItemsList} onAnswer={()=>{} } viewType={HousingViewType.Small} />
-              </PrivateRoute>}/>
+              </PrivateRoute>
+            }
+          />
           <Route
             path={AppRoute.Offer}
-            element={<OfferPage/>} />
+            element={<OfferPage/>}
+          />
           <Route
             path='*'
-            element={<ErrorPage/>}/>
+            element={<ErrorPage/>}
+          />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,7 +1,7 @@
-import Header from "../header/header.tsx";
-import {Outlet, useLocation} from "react-router-dom";
-import {AppRoute, AuthorizationStatus} from "../../const/const.ts";
-import Footer from "../footer/footer.tsx";
+import Header from '../header/header.tsx';
+import {Outlet, useLocation} from 'react-router-dom';
+import {AppRoute, AuthorizationStatus} from '../../const/const.ts';
+import Footer from '../footer/footer.tsx';
 
 const getLayoutPath = (pathname : AppRoute) => {
   let pathClass = '';
@@ -17,8 +17,8 @@ const getLayoutPath = (pathname : AppRoute) => {
       }
     }
   }
-  return {pathClass, isDrawFooter}
-}
+  return {pathClass, isDrawFooter};
+};
 
 type LayoutProps ={
   authorizationStatus: AuthorizationStatus;
@@ -27,7 +27,7 @@ type LayoutProps ={
 function Layout({authorizationStatus}: LayoutProps){
   const authStatus = authorizationStatus;
   const {pathname} = useLocation();
-  const {pathClass, isDrawFooter}  = getLayoutPath(pathname as AppRoute);
+  const {pathClass, isDrawFooter} = getLayoutPath(pathname as AppRoute);
   return(
     <div className={`page ${pathClass}`}>
       <Header authorizationStatus={authStatus}/>

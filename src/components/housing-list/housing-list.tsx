@@ -1,6 +1,6 @@
-import SortForm from "../sort-form/sort-form.tsx";
-import HousingItem from "../housing-item/housing-item.tsx";
-import {ShortHousingItem} from "../../types/types.ts";
+import SortForm from '../sort-form/sort-form.tsx';
+import HousingItem from '../housing-item/housing-item.tsx';
+import {ShortHousingItem} from '../../types/types.ts';
 
 
 type HousingListProps = {
@@ -13,7 +13,7 @@ function HousingList({houseArray, numberItems, onAnswer, viewType}:HousingListPr
 
   const takeActiveOffer = (value:string) => {
     onAnswer(value);
-  }
+  };
 
   const listItems = houseArray.slice(0, numberItems).map((item) => <HousingItem key={item.id} houseItem = {item} onAnswer={takeActiveOffer} viewType={viewType} />);
   return(

@@ -36,4 +36,4 @@ export const ReviewList: FullReviewType[] = [{
     avatarUrl: 'https://url-to-image/image.png',
     isPro: false
   }
-  }];
+}];

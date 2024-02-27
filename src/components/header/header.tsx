@@ -1,12 +1,12 @@
 import Logo from '../logo/logo.tsx';
-import {AppRoute, AuthorizationStatus} from "../../const/const.ts";
-import {Link} from "react-router-dom";
+import {AppRoute, AuthorizationStatus} from '../../const/const.ts';
+import {Link} from 'react-router-dom';
 
 type HeaderProps ={
   authorizationStatus: AuthorizationStatus;
 }
 function Header({authorizationStatus}: HeaderProps) {
-  const isAuthorize= authorizationStatus;
+  const isAuthorize = authorizationStatus;
 
   return(
     <header className="header">
@@ -25,15 +25,15 @@ function Header({authorizationStatus}: HeaderProps) {
                     <>
                       <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
                       <span className="header__favorite-count">3</span>
-                    </>) :  <span className="header__login">Sign in</span>}
+                    </>) : <span className="header__login">Sign in</span>}
                 </Link>
               </li>
               { isAuthorize === AuthorizationStatus.Auth ? (
                 <li className="header__nav-item">
-                  <a className="header__nav-link" href="#">
+                  <Link className="header__nav-link" to={AppRoute.Login}>
                     <span className="header__signout">Sign out</span>
-                  </a>
-              </li>):null}
+                  </Link>
+                </li>) : null}
             </ul>
           </nav>
         </div>
