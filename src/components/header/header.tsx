@@ -6,7 +6,7 @@ type HeaderProps ={
   authorizationStatus: AuthorizationStatus;
 }
 function Header({authorizationStatus}: HeaderProps) {
-  const isAuthorize = authorizationStatus;
+  const isAuthorize = authorizationStatus === AuthorizationStatus.Auth;
 
   return(
     <header className="header">
@@ -21,14 +21,14 @@ function Header({authorizationStatus}: HeaderProps) {
                 <Link className="header__nav-link header__nav-link--profile" to={AppRoute.Favorites}>
                   <div className="header__avatar-wrapper user__avatar-wrapper">
                   </div>
-                  { isAuthorize === AuthorizationStatus.Auth ? (
+                  { isAuthorize  ? (
                     <>
                       <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
                       <span className="header__favorite-count">3</span>
                     </>) : <span className="header__login">Sign in</span>}
                 </Link>
               </li>
-              { isAuthorize === AuthorizationStatus.Auth ? (
+              { isAuthorize ? (
                 <li className="header__nav-item">
                   <Link className="header__nav-link" to={AppRoute.Login}>
                     <span className="header__signout">Sign out</span>

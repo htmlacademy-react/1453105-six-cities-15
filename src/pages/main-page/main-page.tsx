@@ -11,9 +11,6 @@ type MainPageProps = {
 
 function MainPage({houseArray, numberItems, viewType }:MainPageProps) {
   const [activeOffer, setActiveOffer] = useState<string|null>(null);
-  const takeActiveOffer = (value:string) => {
-    setActiveOffer(value);
-  };
   return (
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
@@ -22,7 +19,7 @@ function MainPage({houseArray, numberItems, viewType }:MainPageProps) {
       </div>
       <div className="cities">
         <div className="cities__places-container container">
-          <HousingList houseArray={houseArray} numberItems={numberItems} onAnswer={takeActiveOffer} viewType={viewType}/>
+          <HousingList houseArray={houseArray} numberItems={numberItems} onAnswer={setActiveOffer} viewType={viewType}/>
           <div className="cities__right-section">
             <p>Идентификатор выбранного оффера {activeOffer}</p>
             <section className="cities__map map"></section>

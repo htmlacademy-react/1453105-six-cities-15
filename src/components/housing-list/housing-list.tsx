@@ -11,11 +11,7 @@ type HousingListProps = {
 }
 function HousingList({houseArray, numberItems, onAnswer, viewType}:HousingListProps){
 
-  const takeActiveOffer = (value:string) => {
-    onAnswer(value);
-  };
-
-  const listItems = houseArray.slice(0, numberItems).map((item) => <HousingItem key={item.id} houseItem = {item} onAnswer={takeActiveOffer} viewType={viewType} />);
+  const listItems = houseArray.slice(0, numberItems).map((item) => <HousingItem key={item.id} houseItem = {item} onAnswer={ onAnswer} viewType={viewType} />);
   return(
     <section className="cities__places places">
       <h2 className="visually-hidden">Places</h2>
