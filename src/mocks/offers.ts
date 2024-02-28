@@ -43,21 +43,11 @@ export const houseList:ShortHousingItem[] = [{
 {
   id: '5',
   title: 'Wood and stone place',
-  costPerNight: 80,
+  costPerNight: 133,
   type: 'Room' ,
   previewImage: 'img/apartment-03.jpg',
   isPremium: false,
   isFavorite: true,
   rating: 4.2
-},
-{
-  id: '6',
-  title: 'Norm apartment',
-  costPerNight: 350,
-  type: 'Apartment' ,
-  previewImage: 'img/apartment-02.jpg',
-  isPremium: true,
-  isFavorite: false,
-  rating: 3.7
 }];
 

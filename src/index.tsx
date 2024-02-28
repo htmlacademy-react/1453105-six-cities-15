@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app.tsx';
-import { houseList } from './fake-data/fake-data.ts';
+import { houseList } from './mocks/offers.ts';
 import { NUMBER_HOUSING_ITEM } from './const/const.ts';
 
 const root = ReactDOM.createRoot(
