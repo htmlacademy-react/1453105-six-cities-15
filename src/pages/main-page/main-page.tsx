@@ -1,7 +1,8 @@
 import {ShortHousingItem} from '../../types/types.ts';
 import Locations from '../../components/locations/locations.tsx';
 import HousingList from '../../components/housing-list/housing-list.tsx';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
+import HousingMap from "../../components/housing-map/housing-map.tsx";
 
 type MainPageProps = {
   readonly numberItems: number;
@@ -11,6 +12,15 @@ type MainPageProps = {
 
 function MainPage({houseArray, numberItems, viewType }:MainPageProps) {
   const [activeOffer, setActiveOffer] = useState<string|null>(null);
+  const [selectedItem, setSelectedItem] = useState<ShortHousingItem| null>(null);
+  useEffect(()=> {
+    const  s = houseArray.filter((item) => item.id === activeOffer)
+    setSelectedItem(s[0]);
+  }, [activeOffer])
+   const city =  houseArray[0].city;
+   const points = houseArray.map((item) => item.location);
+
+  console.log('activeOffer', activeOffer);
   return (
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
@@ -21,8 +31,9 @@ function MainPage({houseArray, numberItems, viewType }:MainPageProps) {
         <div className="cities__places-container container">
           <HousingList houseArray={houseArray} numberItems={numberItems} onAnswer={setActiveOffer} viewType={viewType}/>
           <div className="cities__right-section">
-            <p>Идентификатор выбранного оффера {activeOffer}</p>
-            <section className="cities__map map"></section>
+            <section className="cities__map">
+              <HousingMap city={city.location} points={points} selectedItem={selectedItem}/>
+            </section>
           </div>
         </div>
       </div>
