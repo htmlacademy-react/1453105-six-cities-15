@@ -8,7 +8,7 @@ import OfferPage from '../../pages/offer-page/offer-page.tsx';
 import ErrorPage from '../error-page/error-page.tsx';
 import PrivateRoute from '../private-route/private-route.tsx';
 import Layout from '../layout/layout.tsx';
-import {getAuthorizateStatus} from '../../utils/utils.ts'
+import {getAuthorizateStatus} from '../../utils/utils.ts';
 
 type AppProps = {
   readonly numberItems: number;

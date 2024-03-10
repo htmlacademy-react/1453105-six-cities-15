@@ -1,9 +1,9 @@
-import {ReviewList as listReview} from '../../mocks/reviews.ts'
-import ReviewItem from "../review-item/review-item.tsx";
-import {FullReviewType} from "../../types/types.ts";
+import {ReviewList as listReview} from '../../mocks/reviews.ts';
+import ReviewItem from '../review-item/review-item.tsx';
+import {FullReviewType} from '../../types/types.ts';
 
 function ReviewList(){
-  const reviews = listReview.map((item:FullReviewType) => <ReviewItem key={item.id} review={item}/>)
+  const reviews = listReview.map((item:FullReviewType) => <ReviewItem key={item.id} review={item}/>);
 
   return(
     <>
@@ -14,4 +14,4 @@ function ReviewList(){
     </>
   );
 }
- export default ReviewList;
+export default ReviewList;

@@ -20,7 +20,7 @@ export type LocationType = {
 }
 export type CityType = {
   name: string;
-  location: LocationType
+  location: LocationType;
 }
 export type ShortHousingItem = {
   id: string;

@@ -1,9 +1,9 @@
 import ReviewForm from '../../components/review-form/review-form.tsx';
-import NearOfferList from "../../components/near-offer-list/near-offer-list.tsx";
-import Gallery from "../../components/gallery/gallery.tsx";
-import OfferInside from "../../components/offer-inside/offer-inside.tsx";
-import Host from "../../components/host/host.tsx";
-import ReviewList from "../../components/review-list/review-list.tsx";
+import NearOfferList from '../../components/near-offer-list/near-offer-list.tsx';
+import Gallery from '../../components/gallery/gallery.tsx';
+import OfferInside from '../../components/offer-inside/offer-inside.tsx';
+import Host from '../../components/host/host.tsx';
+import ReviewList from '../../components/review-list/review-list.tsx';
 
 function OfferPage() {
   return (

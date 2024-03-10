@@ -35,7 +35,7 @@ function OfferInside() {
         </li>
       </ul>
     </>
-  )
+  );
 }
 
 export default OfferInside;

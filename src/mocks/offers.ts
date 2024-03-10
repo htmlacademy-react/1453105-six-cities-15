@@ -182,4 +182,4 @@ export const houseList2:FullHousingItem[] = [
     ],
     maxAdults: 3
   }
- ];
+];

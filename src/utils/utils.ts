@@ -1,4 +1,4 @@
-import {AuthorizationStatus} from "../const/const.ts"; '../const/const.ts'
+import {AuthorizationStatus} from '../const/const.ts';
 export function getAuthorizateStatus() {
   return AuthorizationStatus.Auth;
 }
@@ -8,14 +8,14 @@ export function showRating(num: number) {
 }
 
 export function showDate(date : string): string {
-  return new Intl.DateTimeFormat("en-EN", {
-    month: "long",
-    year: "numeric"
-  }).format(new Date(date))
+  return new Intl.DateTimeFormat('en-EN', {
+    month: 'long',
+    year: 'numeric'
+  }).format(new Date(date));
 }
 
 export function specialDate(date: string): string {
-  return new Intl.DateTimeFormat("en-EN", {
+  return new Intl.DateTimeFormat('en-EN', {
     hour: undefined,
-  }).format(new Date(date))
+  }).format(new Date(date));
 }

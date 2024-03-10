@@ -20,6 +20,6 @@ function Gallery(){
         <img className="offer__image" src="img/apartment-01.jpg" alt="Photo studio"/>
       </div>
     </div>
-  )
+  );
 }
 export default Gallery;

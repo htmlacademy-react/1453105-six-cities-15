@@ -1,8 +1,8 @@
 import {ShortHousingItem} from '../../types/types.ts';
 import {Link} from 'react-router-dom';
-import {AppRoute , favoriteBlock, citiesBlock, nearPlacesBlock, HousingViewType} from '../../const/const.ts';
-import * as classNames from "classnames";
-import {showRating} from "../../utils/utils.ts";
+import {AppRoute , favoriteBlock, citiesBlock, nearPlacesBlock} from '../../const/const.ts';
+import * as classNames from 'classnames';
+import {showRating} from '../../utils/utils.ts';
 
 type HousingItemProps = {
   readonly houseItem: ShortHousingItem;
@@ -12,10 +12,9 @@ type HousingItemProps = {
 function HousingItem({houseItem, onAnswer, viewType}:HousingItemProps){
   const {id,title,costPerNight, type,previewImage, isPremium, isFavorite, rating } = houseItem;
   const typeViewItem = viewType;
-  const makeRelativeUrl = (id: string) => AppRoute.Offer.replace(':id', id)
+  const makeRelativeUrl = (idItem: string) => AppRoute.Offer.replace(':id', idItem);
   let blockStyle = {bemBlock: '', widthImg: '', heightImg: ''};
-  switch (viewType)
-  {
+  switch (viewType) {
     case 'Favorites':{
       blockStyle = favoriteBlock;
       break;
@@ -29,7 +28,7 @@ function HousingItem({houseItem, onAnswer, viewType}:HousingItemProps){
       break;
     }
   }
-  const handleMouseEnter = () => onAnswer ? onAnswer(id): {};
+  const handleMouseEnter = () => onAnswer ? onAnswer(id) : {};
 
   return (
     <article
@@ -45,7 +44,7 @@ function HousingItem({houseItem, onAnswer, viewType}:HousingItemProps){
           <img className="place-card__image" src={previewImage} width={`${blockStyle.widthImg}`} height={`${blockStyle.heightImg}`} alt="Place image"/>
         </Link>
       </div>
-      <div className={ typeViewItem === HousingViewType.Favorites ?`${blockStyle.bemBlock}__card-info place-card__info`: 'place-card__info'}>
+      <div className={ typeViewItem === 'Favorites' ? `${blockStyle.bemBlock}__card-info place-card__info` : 'place-card__info'}>
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{costPerNight}</b>
@@ -60,7 +59,7 @@ function HousingItem({houseItem, onAnswer, viewType}:HousingItemProps){
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: showRating(rating)+ '%' }}></span>
+            <span style={{width: `${showRating(rating) }%` }}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>

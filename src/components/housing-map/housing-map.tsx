@@ -1,8 +1,8 @@
-import {LocationType, ShortHousingItem} from "../../types/types.ts";
-import { useEffect, useRef} from "react";
-import useMap from "../../hooks/useMap.ts";
-import leaflet from "leaflet";
-import {URL_MARKER_CURRENT, URL_MARKER_DEFAULT} from "../../const/const.ts";
+import {LocationType, ShortHousingItem} from '../../types/types.ts';
+import { useEffect, useRef} from 'react';
+import useMap from '../../hooks/useMap.ts';
+import leaflet from 'leaflet';
+import {URL_MARKER_CURRENT, URL_MARKER_DEFAULT} from '../../const/const.ts';
 
 type HousingMapProps = {
   city: LocationType;
@@ -26,7 +26,6 @@ function HousingMap(props: HousingMapProps) {
     iconSize: [40, 40],
     iconAnchor: [20, 40],
   });
-  console.log('1', city, selectedItem );
 
   useEffect(() => {
     if (map) {
@@ -36,7 +35,7 @@ function HousingMap(props: HousingMapProps) {
             lat: point.latitude,
             lng: point.longitude,
           }, {
-            icon: (selectedItem?.location === point ) ? currentCustomIcon : defaultCustomIcon,
+            icon: (selectedItem?.location === point) ? currentCustomIcon : defaultCustomIcon,
           })
           .addTo(map);
       });
@@ -45,8 +44,9 @@ function HousingMap(props: HousingMapProps) {
 
   return(
     <div id="map"
-         ref={mapRef}
-         style={{height: '682px'}}>
+      ref={mapRef}
+      style={{height: '682px'}}
+    >
     </div>
   );
 }

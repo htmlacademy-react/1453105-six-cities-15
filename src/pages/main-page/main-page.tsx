@@ -2,7 +2,7 @@ import {ShortHousingItem} from '../../types/types.ts';
 import Locations from '../../components/locations/locations.tsx';
 import HousingList from '../../components/housing-list/housing-list.tsx';
 import {useEffect, useState} from 'react';
-import HousingMap from "../../components/housing-map/housing-map.tsx";
+import HousingMap from '../../components/housing-map/housing-map.tsx';
 
 type MainPageProps = {
   readonly numberItems: number;
@@ -14,13 +14,12 @@ function MainPage({houseArray, numberItems, viewType }:MainPageProps) {
   const [activeOffer, setActiveOffer] = useState<string|null>(null);
   const [selectedItem, setSelectedItem] = useState<ShortHousingItem| null>(null);
   useEffect(()=> {
-    const  s = houseArray.filter((item) => item.id === activeOffer)
+    const s = houseArray.filter((item) => item.id === activeOffer);
     setSelectedItem(s[0]);
-  }, [activeOffer])
-   const city =  houseArray[0].city;
-   const points = houseArray.map((item) => item.location);
+  }, [activeOffer, houseArray]);
+  const city = houseArray[0].city;
+  const points = houseArray.map((item) => item.location);
 
-  console.log('activeOffer', activeOffer);
   return (
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>

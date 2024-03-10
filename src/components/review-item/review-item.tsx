@@ -1,5 +1,5 @@
-import {FullReviewType} from "../../types/types.ts";
-import {showDate, showRating, specialDate} from "../../utils/utils.ts";
+import {FullReviewType} from '../../types/types.ts';
+import {showDate, showRating, specialDate} from '../../utils/utils.ts';
 
 type ReviewItemProps = {
   review: FullReviewType;
@@ -17,7 +17,7 @@ function ReviewItem({review}: ReviewItemProps){
       <div className="reviews__info">
         <div className="reviews__rating rating">
           <div className="reviews__stars rating__stars">
-            <span style={{width: showRating(rating)+'%'}}></span>
+            <span style={{width: `${showRating(rating)}%`}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
@@ -29,4 +29,4 @@ function ReviewItem({review}: ReviewItemProps){
     </li>
   );
 }
- export default ReviewItem;
+export default ReviewItem;
