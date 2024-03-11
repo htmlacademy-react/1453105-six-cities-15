@@ -8,7 +8,7 @@ export const ReviewList: FullReviewType[] = [{
   rating: 3.4,
   user : {
     name: 'Oliver Conner',
-    avatarUrl: 'https://url-to-image/image.png',
+    avatarUrl: 'img/avatar-angelina.jpg',
     isPro: false
   }
 },
@@ -22,7 +22,7 @@ export const ReviewList: FullReviewType[] = [{
   rating: 4.6,
   user : {
     name: 'Barbra Streisand',
-    avatarUrl: 'https://url-to-image/image.png',
+    avatarUrl: 'img/avatar-max.jpg',
     isPro: true
   }
 },
@@ -33,7 +33,7 @@ export const ReviewList: FullReviewType[] = [{
   rating: 4.6,
   user : {
     name: 'Russell Watson',
-    avatarUrl: 'https://url-to-image/image.png',
+    avatarUrl: 'img/avatar-max.jpg',
     isPro: false
   }
 }];

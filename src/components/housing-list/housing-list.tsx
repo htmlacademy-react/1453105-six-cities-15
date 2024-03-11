@@ -7,7 +7,7 @@ type HousingListProps = {
   readonly houseArray: ShortHousingItem[];
   readonly viewType: string;
   numberItems: number;
-  onAnswer: (id: string) => void;
+  onAnswer?: (id: string) => void;
 }
 function HousingList({houseArray, numberItems, onAnswer, viewType}:HousingListProps){
 
