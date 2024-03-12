@@ -3,6 +3,7 @@ import Locations from '../../components/locations/locations.tsx';
 import HousingList from '../../components/housing-list/housing-list.tsx';
 import {useEffect, useState} from 'react';
 import HousingMap from '../../components/housing-map/housing-map.tsx';
+import {getOfferNearBy} from '../../utils/utils.ts';
 
 type MainPageProps = {
   readonly numberItems: number;
@@ -18,7 +19,7 @@ function MainPage({houseArray, numberItems, viewType }:MainPageProps) {
     setSelectedItem(s[0]);
   }, [activeOffer, houseArray]);
   const city = houseArray[0].city;
-  const points = houseArray.map((item) => item.location);
+  const points = getOfferNearBy();
 
   return (
     <main className="page__main page__main--index">

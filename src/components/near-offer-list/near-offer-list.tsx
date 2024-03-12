@@ -4,10 +4,10 @@ import {ShortHousingItem} from '../../types/types.ts';
 import {HousingViewType} from '../../const/const.ts';
 
 type NearOfferListProps = {
-  id: string;
+  selectedItem :ShortHousingItem;
 }
 function NearOfferList(props: NearOfferListProps){
-  const id = props.id;
+  const id = props.selectedItem.id;
   const listItems = houseList.slice(0, 3).map((item: ShortHousingItem) => <HousingItem key={item.id} houseItem = {item} viewType={HousingViewType.NearPlaces} />);
   return(
     <section className="near-places places">
