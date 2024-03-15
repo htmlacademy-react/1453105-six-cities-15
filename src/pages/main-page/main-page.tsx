@@ -19,7 +19,7 @@ function MainPage({houseArray, viewType }:MainPageProps) {
     setSelectedItem(s[0]);
   }, [activeOffer, houseArray]);
 
-  const city = selectedItem? selectedItem.city: houseArray[0].city;
+  const city = selectedItem ? selectedItem.city : houseArray[0].city;
   const points = getOfferNearBy();
 
   return (
@@ -31,9 +31,10 @@ function MainPage({houseArray, viewType }:MainPageProps) {
       <div className="cities">
         <div className="cities__places-container container">
           <HousingList houseArray={houseArray}
-                       city={city.name}
-                       onAnswer={setActiveOffer}
-                       viewType={viewType}/>
+            city={city.name}
+            onAnswer={setActiveOffer}
+            viewType={viewType}
+          />
           <div className="cities__right-section">
             <HousingMap city={city.location} points={points} selectedItem={selectedItem}/>
           </div>

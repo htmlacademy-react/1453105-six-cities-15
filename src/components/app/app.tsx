@@ -28,9 +28,10 @@ function App({houseArray }:AppProps) {
           {
             CITIES.map((city) => (
               <Route index
-                     key={city.name}
-                     path={`/${city.name}`}
-                     element={<MainPage houseArray={houseArray.filter((item) => item.city.name === city.name)} viewType={HousingViewType.Cities}/>}/>
+                key={city.name}
+                path={`/${city.name}`}
+                element={<MainPage houseArray={houseArray.filter((item) => item.city.name === city.name)} viewType={HousingViewType.Cities}/>}
+              />
             ))
           }
           <Route

@@ -243,7 +243,7 @@ export const offerList: ShortHousingItem[] = [
       zoom: 10
     }
   }
-]
+];
 export const fullOfferList: FullHousingItem[] = [
   {
     id: '1',
@@ -640,4 +640,4 @@ export const fullOfferList: FullHousingItem[] = [
     ],
     maxAdults: 4
   },
-]
+];

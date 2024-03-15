@@ -3,7 +3,7 @@ import {useEffect, useRef} from 'react';
 import useMap from '../../hooks/use-map.ts';
 import leaflet, {LayerGroup} from 'leaflet';
 import {currentCustomIcon, defaultCustomIcon} from '../../const/const.ts';
-import * as classNames from "classnames";
+import * as classNames from 'classnames';
 import {useLocation} from 'react-router-dom';
 
 type HousingMapProps = {
@@ -38,7 +38,7 @@ function HousingMap(props: HousingMapProps) {
           })
           .addTo(markerLayer.current);
         leaflet
-          .circle([selectedItem? selectedItem.location.latitude: 0, selectedItem? selectedItem.location.longitude: 0 ], 8000, {
+          .circle([selectedItem ? selectedItem.location.latitude : 0, selectedItem ? selectedItem.location.longitude : 0 ], 8000, {
             color: '#d0ddee',
             fillColor: '#b9d0e8',
             fillOpacity: 0.10
@@ -51,9 +51,11 @@ function HousingMap(props: HousingMapProps) {
   const tempPath = location.pathname.includes('offer');
 
   return(
-      <div id="map"
-           ref={mapRef}
-           className={classNames("map", tempPath ? "offer__map": 'cities__map')}></div>
+    <div id="map"
+      ref={mapRef}
+      className={classNames('map', tempPath ? 'offer__map' : 'cities__map')}
+    >
+    </div>
   );
 }
 

@@ -7,11 +7,11 @@ import ReviewList from '../../components/review-list/review-list.tsx';
 import HousingMap from '../../components/housing-map/housing-map.tsx';
 import {getOfferById,getOfferNearBy, showRating, } from '../../utils/utils.ts';
 import * as classNames from 'classnames';
-import {useParams} from "react-router-dom";
+import {useParams} from 'react-router-dom';
 
 function OfferPage() {
-  let { id } = useParams();
-  const offer =  getOfferById(id?id:'1');
+  const { id } = useParams();
+  const offer = getOfferById(id ? id : '1');
   const nearByOffer = getOfferNearBy();
 
   return (
@@ -77,7 +77,7 @@ function OfferPage() {
             </section>
           </div>
         </div>
-          <HousingMap city={offer.city.location} points={[...nearByOffer, offer.location] } selectedItem={ offer}/>
+        <HousingMap city={offer.city.location} points={[...nearByOffer, offer.location] } selectedItem={ offer}/>
       </section >
       <div className="container">
         <NearOfferList selectedItem={offer}/>
