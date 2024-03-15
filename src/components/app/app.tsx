@@ -1,7 +1,7 @@
 import MainPage from '../../pages/main-page/main-page.tsx';
 import {ShortHousingItem} from '../../types/types.ts';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import {AppRoute, HousingViewType} from '../../const/const.ts';
+import {AppRoute, CITIES, HousingViewType} from '../../const/const.ts';
 import LoginPage from '../../pages/login-page/login-page.tsx';
 import FavoritesPage from '../../pages/favorites-page/favorites-page.tsx';
 import OfferPage from '../../pages/offer-page/offer-page.tsx';
@@ -11,10 +11,9 @@ import Layout from '../layout/layout.tsx';
 import {getAuthorizateStatus} from '../../utils/utils.ts';
 
 type AppProps = {
-  readonly numberItems: number;
   readonly houseArray: ShortHousingItem[];
 }
-function App({houseArray, numberItems }:AppProps) {
+function App({houseArray }:AppProps) {
   const favoritesItemsList = houseArray.filter((item) => item.isFavorite);
   const authorization = getAuthorizateStatus();
 
@@ -25,9 +24,15 @@ function App({houseArray, numberItems }:AppProps) {
           path={AppRoute.Root}
           element={<Layout authorizationStatus={authorization}/>}
         >
-          <Route index
-            element={<MainPage houseArray={houseArray} numberItems={numberItems} viewType={HousingViewType.Cities}/>}
-          />
+          <Route index element={<MainPage houseArray={houseArray.filter((item) => item.city.name === 'Paris')} viewType={HousingViewType.Cities}/>}/>
+          {
+            CITIES.map((city) => (
+              <Route index
+                     key={city.name}
+                     path={`/${city.name}`}
+                     element={<MainPage houseArray={houseArray.filter((item) => item.city.name === city.name)} viewType={HousingViewType.Cities}/>}/>
+            ))
+          }
           <Route
             path={AppRoute.Login}
             element={

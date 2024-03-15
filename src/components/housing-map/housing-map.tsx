@@ -1,9 +1,9 @@
 import {LocationType, ShortHousingItem} from '../../types/types.ts';
 import {useEffect, useRef} from 'react';
 import useMap from '../../hooks/use-map.ts';
-import leaflet from 'leaflet';
+import leaflet, {LayerGroup} from 'leaflet';
 import {currentCustomIcon, defaultCustomIcon} from '../../const/const.ts';
-import './housing-map.css';
+import * as classNames from "classnames";
 import {useLocation} from 'react-router-dom';
 
 type HousingMapProps = {
@@ -16,10 +16,18 @@ function HousingMap(props: HousingMapProps) {
   const { city, points, selectedItem } = props;
   const mapRef = useRef(null);
   const map = useMap(mapRef,city);
+  const markerLayer = useRef<LayerGroup>(new leaflet.LayerGroup());
   const location = useLocation();
 
   useEffect(() => {
-    if (map && selectedItem?.location) {
+    if (map) {
+      map.setView([city.latitude, city.longitude], city.zoom);
+      markerLayer.current.addTo(map);
+      markerLayer.current.clearLayers();
+    }
+  }, [city, map]);
+  useEffect(() => {
+    if (map) {
       points.forEach((point:LocationType) => {
         leaflet
           .marker({
@@ -28,23 +36,24 @@ function HousingMap(props: HousingMapProps) {
           }, {
             icon: (selectedItem?.location === point) ? currentCustomIcon : defaultCustomIcon,
           })
-          .addTo(map);
+          .addTo(markerLayer.current);
         leaflet
-          .circle([selectedItem.location.latitude,selectedItem.location.longitude ], 25000, {
-            fillColor: '#64aff3',
-            fillOpacity: 0.1
+          .circle([selectedItem? selectedItem.location.latitude: 0, selectedItem? selectedItem.location.longitude: 0 ], 8000, {
+            color: '#d0ddee',
+            fillColor: '#b9d0e8',
+            fillOpacity: 0.10
           })
-          .addTo(map);
+          .addTo(markerLayer.current);
       });
     }
   }, [map, points, selectedItem]);
 
+  const tempPath = location.pathname.includes('offer');
+
   return(
-    <div id="map"
-      ref={mapRef}
-      className={location.pathname === '/' ? 'map-block' : 'map-block-offer'}
-    >
-    </div>
+      <div id="map"
+           ref={mapRef}
+           className={classNames("map", tempPath ? "offer__map": 'cities__map')}></div>
   );
 }
 

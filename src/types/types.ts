@@ -1,4 +1,5 @@
 export type HousingType = 'Apartment'|'Room'|'House'|'Hotel';
+export type CitiesType = 'Paris'| 'Cologne' | 'Brussels' |'Amsterdam' | 'Hamburg' | 'Dusseldorf';
 export type OwnerInfo = {
   name: string;
   isPro: boolean;
@@ -19,7 +20,7 @@ export type LocationType = {
   zoom: number;
 }
 export type CityType = {
-  name: string;
+  name: CitiesType;
   location: LocationType;
 }
 export type ShortHousingItem = {

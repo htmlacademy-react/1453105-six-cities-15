@@ -7,10 +7,13 @@ import ReviewList from '../../components/review-list/review-list.tsx';
 import HousingMap from '../../components/housing-map/housing-map.tsx';
 import {getOfferById,getOfferNearBy, showRating, } from '../../utils/utils.ts';
 import * as classNames from 'classnames';
+import {useParams} from "react-router-dom";
 
 function OfferPage() {
-  const offer = getOfferById('2');
+  let { id } = useParams();
+  const offer =  getOfferById(id?id:'1');
   const nearByOffer = getOfferNearBy();
+
   return (
     <main className="page__main page__main--offer">
       <section className="offer">
@@ -25,7 +28,7 @@ function OfferPage() {
               </div>}
             <div className="offer__name-wrapper">
               <h1 className="offer__name">
-                {offer.description}
+                {offer.title}
               </h1>
               <button className={ classNames('place-card__bookmark-button button', {'place-card__bookmark-button--active': offer.isFavorite })} type="button">
                 <svg className="offer__bookmark-icon" width="31" height="33">
@@ -64,10 +67,7 @@ function OfferPage() {
               <Host/>
               <div className="offer__description">
                 <p className="offer__text">
-                    A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
-                </p>
-                <p className="offer__text">
-                    An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.
+                  {offer.description}
                 </p>
               </div>
             </div>
@@ -77,9 +77,7 @@ function OfferPage() {
             </section>
           </div>
         </div>
-        <section className="offer__map map">
-          <HousingMap city={offer.city.location} points={nearByOffer} selectedItem={offer}/>
-        </section>
+          <HousingMap city={offer.city.location} points={[...nearByOffer, offer.location] } selectedItem={ offer}/>
       </section >
       <div className="container">
         <NearOfferList selectedItem={offer}/>
