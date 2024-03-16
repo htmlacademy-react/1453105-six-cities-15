@@ -4,8 +4,16 @@ import Gallery from '../../components/gallery/gallery.tsx';
 import OfferInside from '../../components/offer-inside/offer-inside.tsx';
 import Host from '../../components/host/host.tsx';
 import ReviewList from '../../components/review-list/review-list.tsx';
+import HousingMap from '../../components/housing-map/housing-map.tsx';
+import {getOfferById,getOfferNearBy, showRating, } from '../../utils/utils.ts';
+import * as classNames from 'classnames';
+import {useParams} from 'react-router-dom';
 
 function OfferPage() {
+  const { id } = useParams();
+  const offer = getOfferById(id ? id : '1');
+  const nearByOffer = getOfferNearBy();
+
   return (
     <main className="page__main page__main--offer">
       <section className="offer">
@@ -14,14 +22,15 @@ function OfferPage() {
         </div>
         <div className="offer__container container">
           <div className="offer__wrapper">
-            <div className="offer__mark">
-              <span>Premium</span>
-            </div>
+            { offer.isPremium &&
+              <div className="offer__mark">
+                <span>Premium</span>
+              </div>}
             <div className="offer__name-wrapper">
               <h1 className="offer__name">
-                  Beautiful &amp; luxurious studio at great location
+                {offer.title}
               </h1>
-              <button className="offer__bookmark-button button" type="button">
+              <button className={ classNames('place-card__bookmark-button button', {'place-card__bookmark-button--active': offer.isFavorite })} type="button">
                 <svg className="offer__bookmark-icon" width="31" height="33">
                   <use xlinkHref="#icon-bookmark"></use>
                 </svg>
@@ -30,24 +39,24 @@ function OfferPage() {
             </div>
             <div className="offer__rating rating">
               <div className="offer__stars rating__stars">
-                <span style={{width: '80%'}}></span>
+                <span style={{width: `${showRating(offer.rating) }%` }}></span>
                 <span className="visually-hidden">Rating</span>
               </div>
-              <span className="offer__rating-value rating__value">4.8</span>
+              <span className="offer__rating-value rating__value">{offer.rating}</span>
             </div>
             <ul className="offer__features">
               <li className="offer__feature offer__feature--entire">
-                  Apartment
+                {offer.type}
               </li>
               <li className="offer__feature offer__feature--bedrooms">
-                  3 Bedrooms
+                {offer.bedrooms}
               </li>
               <li className="offer__feature offer__feature--adults">
-                  Max 4 adults
+                {offer.maxAdults}
               </li>
             </ul>
             <div className="offer__price">
-              <b className="offer__price-value">&euro;120</b>
+              <b className="offer__price-value">&euro;{offer.costPerNight}</b>
               <span className="offer__price-text">&nbsp;night</span>
             </div>
             <div className="offer__inside">
@@ -58,10 +67,7 @@ function OfferPage() {
               <Host/>
               <div className="offer__description">
                 <p className="offer__text">
-                    A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
-                </p>
-                <p className="offer__text">
-                    An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.
+                  {offer.description}
                 </p>
               </div>
             </div>
@@ -71,10 +77,10 @@ function OfferPage() {
             </section>
           </div>
         </div>
-        <section className="offer__map map"></section>
+        <HousingMap city={offer.city.location} points={[...nearByOffer, offer.location] } selectedItem={ offer}/>
       </section >
       <div className="container">
-        <NearOfferList id={'1'}/>
+        <NearOfferList selectedItem={offer}/>
       </div>
     </main>
   );

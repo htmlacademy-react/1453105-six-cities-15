@@ -35,5 +35,17 @@ export const ReviewList: FullReviewType[] = [{
     name: 'Russell Watson',
     avatarUrl: 'img/avatar-max.jpg',
     isPro: false
+  },
+},
+{
+  id: '4',
+  comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore',
+  date: '2021-05-01T14:13:56.569Z',
+  rating: 4.6,
+  user : {
+    name: 'Russell Watson',
+    avatarUrl: 'img/avatar-max.jpg',
+    isPro: false
   }
-}];
+}
+];

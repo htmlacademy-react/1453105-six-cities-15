@@ -1,8 +1,10 @@
 import {LocationType, ShortHousingItem} from '../../types/types.ts';
-import { useEffect, useRef} from 'react';
-import useMap from '../../hooks/useMap.ts';
-import leaflet from 'leaflet';
-import {URL_MARKER_CURRENT, URL_MARKER_DEFAULT} from '../../const/const.ts';
+import {useEffect, useRef} from 'react';
+import useMap from '../../hooks/use-map.ts';
+import leaflet, {LayerGroup} from 'leaflet';
+import {currentCustomIcon, defaultCustomIcon} from '../../const/const.ts';
+import * as classNames from 'classnames';
+import {useLocation} from 'react-router-dom';
 
 type HousingMapProps = {
   city: LocationType;
@@ -14,19 +16,16 @@ function HousingMap(props: HousingMapProps) {
   const { city, points, selectedItem } = props;
   const mapRef = useRef(null);
   const map = useMap(mapRef,city);
+  const markerLayer = useRef<LayerGroup>(new leaflet.LayerGroup());
+  const location = useLocation();
 
-  const defaultCustomIcon = leaflet.icon({
-    iconUrl: URL_MARKER_DEFAULT,
-    iconSize: [40, 40],
-    iconAnchor: [20, 40],
-  });
-
-  const currentCustomIcon = leaflet.icon({
-    iconUrl: URL_MARKER_CURRENT,
-    iconSize: [40, 40],
-    iconAnchor: [20, 40],
-  });
-
+  useEffect(() => {
+    if (map) {
+      map.setView([city.latitude, city.longitude], city.zoom);
+      markerLayer.current.addTo(map);
+      markerLayer.current.clearLayers();
+    }
+  }, [city, map]);
   useEffect(() => {
     if (map) {
       points.forEach((point:LocationType) => {
@@ -37,15 +36,24 @@ function HousingMap(props: HousingMapProps) {
           }, {
             icon: (selectedItem?.location === point) ? currentCustomIcon : defaultCustomIcon,
           })
-          .addTo(map);
+          .addTo(markerLayer.current);
+        leaflet
+          .circle([selectedItem ? selectedItem.location.latitude : 0, selectedItem ? selectedItem.location.longitude : 0 ], 8000, {
+            color: '#d0ddee',
+            fillColor: '#b9d0e8',
+            fillOpacity: 0.10
+          })
+          .addTo(markerLayer.current);
       });
     }
   }, [map, points, selectedItem]);
 
+  const tempPath = location.pathname.includes('offer');
+
   return(
     <div id="map"
       ref={mapRef}
-      style={{height: '682px'}}
+      className={classNames('map', tempPath ? 'offer__map' : 'cities__map')}
     >
     </div>
   );
