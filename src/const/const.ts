@@ -1,18 +1,21 @@
 import leaflet from 'leaflet';
 export const NUMBER_HOUSING_ITEM: number = 5;
-export const URL_MARKER_DEFAULT = 'img/pin.svg';
-export const URL_MARKER_CURRENT = 'img/pin-active.svg';
+export const URL_MARKER_DEFAULT = '/img/pin.svg';
+export const URL_MARKER_CURRENT = '/img/pin-active.svg';
+
+const ICON_SIZES= {
+  iconSize: [27, 39] as [number, number],
+  iconAnchor: [13.5, 39] as [ number, number],
+} as const;
 
 export const defaultCustomIcon = leaflet.icon({
   iconUrl: URL_MARKER_DEFAULT,
-  iconSize: [40, 40],
-  iconAnchor: [20, 40],
+  ...ICON_SIZES
 });
 
 export const currentCustomIcon = leaflet.icon({
   iconUrl: URL_MARKER_CURRENT,
-  iconSize: [40, 40],
-  iconAnchor: [20, 40],
+  ...ICON_SIZES
 });
 
 export enum AppRoute {

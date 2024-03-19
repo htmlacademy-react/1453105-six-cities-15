@@ -1,7 +1,7 @@
 import {ShortHousingItem} from '../../types/types.ts';
 import Locations from '../../components/locations/locations.tsx';
 import HousingList from '../../components/housing-list/housing-list.tsx';
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import HousingMap from '../../components/housing-map/housing-map.tsx';
 import {getOfferNearBy} from '../../utils/utils.ts';
 
@@ -12,12 +12,7 @@ type MainPageProps = {
 
 function MainPage({houseArray, viewType }:MainPageProps) {
   const [activeOffer, setActiveOffer] = useState<string|null>(null);
-  const [selectedItem, setSelectedItem] = useState<ShortHousingItem| null>(null);
-
-  useEffect(()=> {
-    const s = houseArray.filter((item) => item.id === activeOffer);
-    setSelectedItem(s[0]);
-  }, [activeOffer, houseArray]);
+  const selectedItem  = houseArray.find((item) => item.id === activeOffer)!;
 
   const city = selectedItem ? selectedItem.city : houseArray[0].city;
   const points = getOfferNearBy();
