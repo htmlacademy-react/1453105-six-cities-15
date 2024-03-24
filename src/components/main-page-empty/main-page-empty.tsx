@@ -1,4 +1,4 @@
-import {CitiesType} from "../../types/types.ts";
+import {CitiesType} from '../../types/types.ts';
 
 type MainPageEmptyProps = {
   city: CitiesType;

@@ -2,7 +2,7 @@ import Header from '../header/header.tsx';
 import {Outlet, useLocation} from 'react-router-dom';
 import {AppRoute, AuthorizationStatus} from '../../const/const.ts';
 import Footer from '../footer/footer.tsx';
-import {useEffect, useState} from "react";
+import {useEffect, useState} from 'react';
 
 type LayoutProps ={
   authorizationStatus: AuthorizationStatus;
@@ -16,15 +16,14 @@ function Layout({authorizationStatus}: LayoutProps){
 
 
   useEffect(() => {
-    console.log('pathClass', pathClass);
     setPathClass('page--gray page--main');
     if (location.pathname.includes('offer')){
       setPathClass('');
     }
-    if (location.pathname === (AppRoute.Login )){
+    if (location.pathname.includes(AppRoute.Login)){
       setPathClass('page--gray page--login');
     }
-    if (location.pathname === (AppRoute.Favorites)){
+    if (location.pathname.includes(AppRoute.Favorites)){
       isDrawFooter = true;
       setPathClass('');
     }

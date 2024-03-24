@@ -1,6 +1,6 @@
 import {ShortHousingItem} from '../../types/types.ts';
 import HousingItem from '../../components/housing-item/housing-item.tsx';
-import FavoritesPageEmpty from "../../components/favorites-page-empty/favorites-page-empty.tsx";
+import FavoritesPageEmpty from '../../components/favorites-page-empty/favorites-page-empty.tsx';
 
 type FavoritePageProps = {
   readonly houseArray: ShortHousingItem[];
@@ -16,24 +16,25 @@ function FavoritesPage({houseArray, viewType, onAnswer}: FavoritePageProps){
   return(
     <main className="page__main page__main--favorites">
       <div className="page__favorites-container container">
-        { listAmsterdam.length > 0 ? <section className="favorites">
-          <h1 className="favorites__title">Saved listing</h1>
-          <ul className="favorites__list">
-            <li className="favorites__locations-items">
-              <div className="favorites__locations locations locations--current">
-                <div className="locations__item">
-                  <a className="locations__item-link" href="#">
-                    <span>Amsterdam</span>
-                  </a>
+        { listAmsterdam.length > 0 ?
+          <section className="favorites">
+            <h1 className="favorites__title">Saved listing</h1>
+            <ul className="favorites__list">
+              <li className="favorites__locations-items">
+                <div className="favorites__locations locations locations--current">
+                  <div className="locations__item">
+                    <a className="locations__item-link" href="#">
+                      <span>Amsterdam</span>
+                    </a>
+                  </div>
                 </div>
-              </div>
-              <div className="favorites__places">
-                {listAmsterdam}
-              </div>
-            </li>
-          </ul>
-        </section> :
-        <FavoritesPageEmpty/>}
+                <div className="favorites__places">
+                  {listAmsterdam}
+                </div>
+              </li>
+            </ul>
+          </section> :
+          <FavoritesPageEmpty/>}
       </div>
     </main>
   );

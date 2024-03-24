@@ -10,13 +10,7 @@ type HousingListProps = {
   onAnswer?: (id: string) => void;
 }
 function HousingList({currentOffers, onAnswer, viewType, city}:HousingListProps){
-  const listItems = currentOffers.map((item) =>
-    <HousingItem
-      key={item.id}
-      houseItem ={item}
-      onAnswer={onAnswer}
-      viewType={viewType} />
-  );
+  const listItems = currentOffers.map((item) => (<HousingItem key={item.id} houseItem ={item} onAnswer={onAnswer} viewType={viewType} />));
 
   return(
     <section className="cities__places places">

@@ -11,13 +11,13 @@ type HousingItemProps = {
 }
 function HousingItem({houseItem, onAnswer, viewType}:HousingItemProps){
   const {id,
-        title,
-        price,
-        type,
-        previewImage,
-        isPremium,
-        isFavorite,
-        rating } = houseItem;
+    title,
+    price,
+    type,
+    previewImage,
+    isPremium,
+    isFavorite,
+    rating } = houseItem;
   const typeViewItem = viewType;
   const makeRelativeUrl = (idItem: string) => AppRoute.Offer.replace(':id', idItem);
 

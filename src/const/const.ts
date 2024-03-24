@@ -3,7 +3,7 @@ export const NUMBER_HOUSING_ITEM: number = 5;
 export const URL_MARKER_DEFAULT = '/img/pin.svg';
 export const URL_MARKER_CURRENT = '/img/pin-active.svg';
 
-const ICON_SIZES= {
+const ICON_SIZES = {
   iconSize: [27, 39] as [number, number],
   iconAnchor: [13.5, 39] as [ number, number],
 } as const;

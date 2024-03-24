@@ -8,12 +8,12 @@ import HousingMap from '../../components/housing-map/housing-map.tsx';
 import {getOfferById,getOfferNearBy, showRating, } from '../../utils/utils.ts';
 import * as classNames from 'classnames';
 import {useParams} from 'react-router-dom';
-import {useAppSelector} from "../../hooks/store.ts";
+import {useAppSelector} from '../../hooks/store.ts';
 
 function OfferPage() {
   const { id } = useParams();
   const offer = getOfferById(id!);
-  const currentCity = useAppSelector((state) => state.city );
+  const currentCity = useAppSelector((state) => state.city);
   const nearByOffer = getOfferNearBy(currentCity.name);
 
   return (
