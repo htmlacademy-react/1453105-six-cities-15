@@ -8,11 +8,13 @@ import HousingMap from '../../components/housing-map/housing-map.tsx';
 import {getOfferById,getOfferNearBy, showRating, } from '../../utils/utils.ts';
 import * as classNames from 'classnames';
 import {useParams} from 'react-router-dom';
+import {useAppSelector} from "../../hooks/store.ts";
 
 function OfferPage() {
   const { id } = useParams();
-  const offer = getOfferById(id ? id : '1');
-  const nearByOffer = getOfferNearBy();
+  const offer = getOfferById(id!);
+  const currentCity = useAppSelector((state) => state.city );
+  const nearByOffer = getOfferNearBy(currentCity.name);
 
   return (
     <main className="page__main page__main--offer">
@@ -56,7 +58,7 @@ function OfferPage() {
               </li>
             </ul>
             <div className="offer__price">
-              <b className="offer__price-value">&euro;{offer.costPerNight}</b>
+              <b className="offer__price-value">&euro;{offer.price}</b>
               <span className="offer__price-text">&nbsp;night</span>
             </div>
             <div className="offer__inside">

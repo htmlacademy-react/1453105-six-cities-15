@@ -24,13 +24,13 @@ function App({houseArray }:AppProps) {
           path={AppRoute.Root}
           element={<Layout authorizationStatus={authorization}/>}
         >
-          <Route index element={<MainPage houseArray={houseArray.filter((item) => item.city.name === 'Paris')} viewType={HousingViewType.Cities}/>}/>
+          <Route index element={<MainPage viewType={HousingViewType.Cities}/>}/>
           {
             CITIES.map((city) => (
               <Route index
                 key={city.name}
                 path={`/${city.name}`}
-                element={<MainPage houseArray={houseArray.filter((item) => item.city.name === city.name)} viewType={HousingViewType.Cities}/>}
+                element={<MainPage viewType={HousingViewType.Cities}/>}
               />
             ))
           }

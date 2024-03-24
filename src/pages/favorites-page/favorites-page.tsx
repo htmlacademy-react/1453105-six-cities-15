@@ -1,5 +1,6 @@
 import {ShortHousingItem} from '../../types/types.ts';
 import HousingItem from '../../components/housing-item/housing-item.tsx';
+import FavoritesPageEmpty from "../../components/favorites-page-empty/favorites-page-empty.tsx";
 
 type FavoritePageProps = {
   readonly houseArray: ShortHousingItem[];
@@ -15,7 +16,7 @@ function FavoritesPage({houseArray, viewType, onAnswer}: FavoritePageProps){
   return(
     <main className="page__main page__main--favorites">
       <div className="page__favorites-container container">
-        <section className="favorites">
+        { listAmsterdam.length > 0 ? <section className="favorites">
           <h1 className="favorites__title">Saved listing</h1>
           <ul className="favorites__list">
             <li className="favorites__locations-items">
@@ -27,11 +28,12 @@ function FavoritesPage({houseArray, viewType, onAnswer}: FavoritePageProps){
                 </div>
               </div>
               <div className="favorites__places">
-                { listAmsterdam.length > 0 ? listAmsterdam : []}
+                {listAmsterdam}
               </div>
             </li>
           </ul>
-        </section>
+        </section> :
+        <FavoritesPageEmpty/>}
       </div>
     </main>
   );

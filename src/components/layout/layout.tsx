@@ -2,23 +2,7 @@ import Header from '../header/header.tsx';
 import {Outlet, useLocation} from 'react-router-dom';
 import {AppRoute, AuthorizationStatus} from '../../const/const.ts';
 import Footer from '../footer/footer.tsx';
-
-const getLayoutPath = (pathname : AppRoute) => {
-  let pathClass = '';
-  let isDrawFooter = false;
-  if (pathname === AppRoute.Root) {
-    pathClass = 'page--gray page--main';
-  } else {
-    if (pathname === AppRoute.Login) {
-      pathClass = 'page--gray page--login';
-    } else {
-      if (pathname === AppRoute.Favorites) {
-        isDrawFooter = true;
-      }
-    }
-  }
-  return {pathClass, isDrawFooter};
-};
+import {useEffect, useState} from "react";
 
 type LayoutProps ={
   authorizationStatus: AuthorizationStatus;
@@ -26,8 +10,27 @@ type LayoutProps ={
 
 function Layout({authorizationStatus}: LayoutProps){
   const authStatus = authorizationStatus;
-  const {pathname} = useLocation();
-  const {pathClass, isDrawFooter} = getLayoutPath(pathname as AppRoute);
+  const [pathClass, setPathClass] = useState('');
+  let isDrawFooter: boolean = false;
+  const location = useLocation();
+
+
+  useEffect(() => {
+    console.log('pathClass', pathClass);
+    setPathClass('page--gray page--main');
+    if (location.pathname.includes('offer')){
+      setPathClass('');
+    }
+    if (location.pathname === (AppRoute.Login )){
+      setPathClass('page--gray page--login');
+    }
+    if (location.pathname === (AppRoute.Favorites)){
+      isDrawFooter = true;
+      setPathClass('');
+    }
+  }, [location.pathname]);
+
+
   return(
     <div className={`page ${pathClass}`}>
       <Header authorizationStatus={authStatus}/>

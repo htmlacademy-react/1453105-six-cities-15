@@ -1,4 +1,4 @@
-export type HousingType = 'Apartment'|'Room'|'House'|'Hotel';
+export type HousingType = 'apartment'|'room'|'house'|'hotel';
 export type CitiesType = 'Paris'| 'Cologne' | 'Brussels' |'Amsterdam' | 'Hamburg' | 'Dusseldorf';
 export type OwnerInfo = {
   name: string;
@@ -26,7 +26,7 @@ export type CityType = {
 export type ShortHousingItem = {
   id: string;
   title: string;
-  costPerNight: number;
+  price: number;
   type: HousingType;
   previewImage?: string;
   isPremium: boolean;
