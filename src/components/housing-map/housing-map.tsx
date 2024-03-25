@@ -37,13 +37,6 @@ function HousingMap(props: HousingMapProps) {
             icon: (selectedItem?.location === point) ? currentCustomIcon : defaultCustomIcon,
           })
           .addTo(markerLayer.current);
-        leaflet
-          .circle([selectedItem ? selectedItem.location.latitude : 0, selectedItem ? selectedItem.location.longitude : 0 ], 8000, {
-            color: '#d0ddee',
-            fillColor: '#b9d0e8',
-            fillOpacity: 0.10
-          })
-          .addTo(markerLayer.current);
       });
     }
   }, [map, points, selectedItem]);

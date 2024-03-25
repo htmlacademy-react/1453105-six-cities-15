@@ -10,9 +10,17 @@ type HousingItemProps = {
   onAnswer?: (id: string) => void;
 }
 function HousingItem({houseItem, onAnswer, viewType}:HousingItemProps){
-  const {id,title,costPerNight, type,previewImage, isPremium, isFavorite, rating } = houseItem;
+  const {id,
+    title,
+    price,
+    type,
+    previewImage,
+    isPremium,
+    isFavorite,
+    rating } = houseItem;
   const typeViewItem = viewType;
   const makeRelativeUrl = (idItem: string) => AppRoute.Offer.replace(':id', idItem);
+
   let blockStyle = {bemBlock: '', widthImg: '', heightImg: ''};
   switch (viewType) {
     case 'Favorites':{
@@ -47,7 +55,7 @@ function HousingItem({houseItem, onAnswer, viewType}:HousingItemProps){
       <div className={ typeViewItem === 'Favorites' ? `${blockStyle.bemBlock}__card-info place-card__info` : 'place-card__info'}>
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
-            <b className="place-card__price-value">&euro;{costPerNight}</b>
+            <b className="place-card__price-value">&euro;{price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
           <button className={ classNames('place-card__bookmark-button button', {'place-card__bookmark-button--active': isFavorite })} type="button">

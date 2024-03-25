@@ -1,5 +1,6 @@
 import {AuthorizationStatus} from '../const/const.ts';
 import {offerList, fullOfferList} from '../mocks/offers.ts';
+import {CitiesType} from '../types/types.ts';
 export function getAuthorizateStatus() {
   return AuthorizationStatus.Auth;
 }
@@ -9,8 +10,8 @@ export function getOfferById(id: string) {
   return tempArray[0];
 }
 
-export function getOfferNearBy() {
-  return offerList.map((item) => item.location);
+export function getOfferNearBy(city: CitiesType) {
+  return offerList.filter(((item) => item.city.name === city)).map((item) => item.location);
 }
 export function showRating(num: number) {
   return `${(Math.round(num) * 100 / 5).toString()}`;

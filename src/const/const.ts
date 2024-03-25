@@ -1,18 +1,21 @@
 import leaflet from 'leaflet';
 export const NUMBER_HOUSING_ITEM: number = 5;
-export const URL_MARKER_DEFAULT = 'img/pin.svg';
-export const URL_MARKER_CURRENT = 'img/pin-active.svg';
+export const URL_MARKER_DEFAULT = '/img/pin.svg';
+export const URL_MARKER_CURRENT = '/img/pin-active.svg';
+
+const ICON_SIZES = {
+  iconSize: [27, 39] as [number, number],
+  iconAnchor: [13.5, 39] as [ number, number],
+} as const;
 
 export const defaultCustomIcon = leaflet.icon({
   iconUrl: URL_MARKER_DEFAULT,
-  iconSize: [40, 40],
-  iconAnchor: [20, 40],
+  ...ICON_SIZES
 });
 
 export const currentCustomIcon = leaflet.icon({
   iconUrl: URL_MARKER_CURRENT,
-  iconSize: [40, 40],
-  iconAnchor: [20, 40],
+  ...ICON_SIZES
 });
 
 export enum AppRoute {
@@ -51,8 +54,8 @@ export const CITIES = [
   {
     name: 'Paris',
     location: {
-      latitude: 48.8534100,
-      longitude: 2.3488000,
+      latitude: 48.85661,
+      longitude: 2.351499,
       zoom: 10
     },
     slug: 'paris'
@@ -60,8 +63,8 @@ export const CITIES = [
   {
     name: 'Cologne',
     location: {
-      latitude: 45.5786200,
-      longitude: 9.9418000,
+      latitude: 50.938361,
+      longitude: 6.959974,
       zoom: 10
     },
     slug: 'cologne'
@@ -69,8 +72,8 @@ export const CITIES = [
   {
     name: 'Brussels',
     location: {
-      latitude: 50.8504500,
-      longitude: 4.3487800,
+      latitude: 50.846557,
+      longitude: 4.351697,
       zoom: 10
     },
     slug: 'brussels'
@@ -78,8 +81,8 @@ export const CITIES = [
   {
     name: 'Amsterdam',
     location: {
-      latitude: 52.3740300,
-      longitude: 4.8896900,
+      latitude: 52.37454,
+      longitude: 4.897976,
       zoom: 10
     },
     slug: 'amsterdam'
@@ -87,8 +90,8 @@ export const CITIES = [
   {
     name: 'Hamburg',
     location: {
-      latitude: 53.5753200,
-      longitude: 10.0153400,
+      latitude: 53.550341,
+      longitude: 10.000654,
       zoom: 10
     },
     slug: 'hamburg'
@@ -96,8 +99,8 @@ export const CITIES = [
   {
     name: 'Dusseldorf',
     location: {
-      latitude: 51.2217200,
-      longitude: 6.7761600,
+      latitude: 51.225402,
+      longitude: 6.776314,
       zoom: 10
     },
     slug: 'dusseldorf'

@@ -1,42 +1,45 @@
-import {ShortHousingItem} from '../../types/types.ts';
 import Locations from '../../components/locations/locations.tsx';
 import HousingList from '../../components/housing-list/housing-list.tsx';
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import HousingMap from '../../components/housing-map/housing-map.tsx';
 import {getOfferNearBy} from '../../utils/utils.ts';
+import MainPageEmpty from '../../components/main-page-empty/main-page-empty.tsx';
+import * as classNames from 'classnames';
+import {useAppSelector} from '../../hooks/store.ts';
 
 type MainPageProps = {
-  readonly houseArray: ShortHousingItem[];
   readonly viewType: string;
 }
 
-function MainPage({houseArray, viewType }:MainPageProps) {
+function MainPage({ viewType }:MainPageProps) {
+  const houseArray = useAppSelector((state) => state.offers);
+  const currentCity = useAppSelector((state) => state.city);
+  const currentOffers = houseArray.filter((offer)=> offer.city.name === currentCity.name);
+
   const [activeOffer, setActiveOffer] = useState<string|null>(null);
-  const [selectedItem, setSelectedItem] = useState<ShortHousingItem| null>(null);
+  const selectedItem = currentOffers.find((item) => item.id === activeOffer)!;
 
-  useEffect(()=> {
-    const s = houseArray.filter((item) => item.id === activeOffer);
-    setSelectedItem(s[0]);
-  }, [activeOffer, houseArray]);
+  const isEmptyOffers = currentOffers.length === 0;
 
-  const city = selectedItem ? selectedItem.city : houseArray[0].city;
-  const points = getOfferNearBy();
+  const points = getOfferNearBy(currentCity.name);
 
   return (
-    <main className="page__main page__main--index">
+    <main className={classNames('page__main page__main--index', {'page__main--index-empty': isEmptyOffers})}>
       <h1 className="visually-hidden">Cities</h1>
       <div className="tabs">
         <Locations/>
       </div>
       <div className="cities">
-        <div className="cities__places-container container">
-          <HousingList houseArray={houseArray}
-            city={city.name}
-            onAnswer={setActiveOffer}
-            viewType={viewType}
-          />
+        <div className={classNames('cities__places-container container', {'cities__places-container--empty' : isEmptyOffers})}>
+          { !isEmptyOffers ?
+            <HousingList currentOffers={currentOffers}
+              city={currentCity.name}
+              onAnswer={setActiveOffer}
+              viewType={viewType}
+            /> :
+            <MainPageEmpty city={currentCity.name}/>}
           <div className="cities__right-section">
-            <HousingMap city={city.location} points={points} selectedItem={selectedItem}/>
+            { !isEmptyOffers && <HousingMap city={currentCity.location} points={points} selectedItem={selectedItem}/>}
           </div>
         </div>
       </div>

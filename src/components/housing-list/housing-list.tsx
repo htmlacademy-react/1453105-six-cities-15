@@ -4,13 +4,14 @@ import {ShortHousingItem} from '../../types/types.ts';
 
 
 type HousingListProps = {
-  readonly houseArray: ShortHousingItem[];
+  readonly currentOffers: ShortHousingItem[];
   readonly viewType: string;
   readonly city: string;
   onAnswer?: (id: string) => void;
 }
-function HousingList({houseArray, onAnswer, viewType, city}:HousingListProps){
-  const listItems = houseArray.map((item) => <HousingItem key={item.id} houseItem = {item} onAnswer={ onAnswer} viewType={viewType} />);
+function HousingList({currentOffers, onAnswer, viewType, city}:HousingListProps){
+  const listItems = currentOffers.map((item) => (<HousingItem key={item.id} houseItem ={item} onAnswer={onAnswer} viewType={viewType} />));
+
   return(
     <section className="cities__places places">
       <h2 className="visually-hidden">Places</h2>
