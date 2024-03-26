@@ -15,13 +15,11 @@ function MainPage({ viewType }:MainPageProps) {
   const houseArray = useAppSelector((state) => state.offers);
   const currentCity = useAppSelector((state) => state.city);
   const currentOffers = houseArray.filter((offer)=> offer.city.name === currentCity.name);
-
   const [activeOffer, setActiveOffer] = useState<string|null>(null);
   const selectedItem = currentOffers.find((item) => item.id === activeOffer)!;
-
   const isEmptyOffers = currentOffers.length === 0;
-
   const points = getOfferNearBy(currentCity.name);
+
 
   return (
     <main className={classNames('page__main page__main--index', {'page__main--index-empty': isEmptyOffers})}>

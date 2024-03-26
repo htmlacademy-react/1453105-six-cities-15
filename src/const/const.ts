@@ -3,6 +3,15 @@ export const NUMBER_HOUSING_ITEM: number = 5;
 export const URL_MARKER_DEFAULT = '/img/pin.svg';
 export const URL_MARKER_CURRENT = '/img/pin-active.svg';
 
+export const SORT_OPTIONS = ['Popular', 'Price: low to high', 'Price: high to low' , 'Top rated first'] satisfies Record<SortOption, string>;
+
+export const enum SortOption {
+  Popular,
+  PriceLowToHigh,
+  PriceHighToLow,
+  TopRatedFirst
+}
+
 const ICON_SIZES = {
   iconSize: [27, 39] as [number, number],
   iconAnchor: [13.5, 39] as [ number, number],
